@@ -49,7 +49,7 @@ export function parseCsvFile(): Promise<InvoiceData[]> {
             emisisonDate: parseDate(r["Data"]),
             invoiceNumber: parseInt(r["N° Fattura"]),
             taxCode: r["CF"],
-            amount: parseFloat(r["Fattura"]),
+            amount: parseFloat(r["Fattura"].replaceAll(',','.')),
           }));
         resolve(invoces);
       }
