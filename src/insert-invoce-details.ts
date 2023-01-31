@@ -28,31 +28,24 @@ export async function insertInvoiceDetails(
   { amount }: InvoiceDetails
 ) {
   try {
-    console.log(`Waiting for fieldset select...`);
     await page.waitForXPath(FIELDSET_PATH);
 
     // await page.waitForXPath(INPUT_PATH(TYPE_POS));
-    console.log(`Clicking on type select...`);
     await openSelect(page, INPUT_PATH(TYPE_POS));
-    console.log(`Selecting option '${TYPE_OPTION}'`);
     await selectOption(page, TYPE_OPTION);
 
-    console.log(`Typing amount ${amount}...`);
     await typeInput(
       page,
       INPUT_PATH(AMOUNT_POS),
       amount.toFixed(2).replace(".", ",")
     );
 
-    console.log(`Typing VAT rate...`);
     await typeInput(page, INPUT_PATH(VAT_POS), "0");
 
-    console.log(`Clicking add button...`);
     await clickButton(page, ADD_PARH);
 
     await page.waitForNavigation();
 
-    console.log(`Clicking next button...`);
     await clickButton(page, NEXT_PATH);
 
     await checkErrors(page);

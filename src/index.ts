@@ -15,7 +15,6 @@ async function main() {
   const page = await browser.newPage();
 
   try {
-    console.log(`Login...`);
     await login(page);
 
     await navigateToFormPage(page);

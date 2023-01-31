@@ -8,22 +8,16 @@ const BUTTON_SELECTOR = "input[type=submit][name=conferma]";
 
 export async function login(page: Page) {
   try {
-    console.log(`page.goto: ${LOGIN_PAGE}`);
     await page.goto(LOGIN_PAGE);
 
     // wait for page loading
-    console.log(`wait for selector '${USERNAME_SELECTOR}'`);
     await page.waitForSelector(USERNAME_SELECTOR);
 
-    console.log(`typing username`);
     await page.type(USERNAME_SELECTOR, process.env.USERNAME);
-    console.log(`typing password`);
     await page.type(PASSWORD_SELECTOR, process.env.PASSWORD);
 
     // wait for button
-    console.log(`waiting for selector '${BUTTON_SELECTOR}'`);
     await page.waitForSelector(BUTTON_SELECTOR);
-    console.log(`clicking on button '${BUTTON_SELECTOR}'`);
     await page.click(BUTTON_SELECTOR);
 
     // check if credentials is valid

@@ -6,12 +6,15 @@ import { InvoiceData } from "./process-invoice";
 const headers = [
   "N° Fattura",
   "Data",
-  "Paziente",
-  "Guadagno",
-  "Enpab",
-  "Marca da bollo",
+  "Paziente ",
+  "Visita",
   "Fattura",
+  "Enpab 4% (=contributo integrativo)",
+  "Marca da bollo",
   "Commissione",
+  "Contributo soggettivo 5%",
+  "Imposta sostitutiva (P.IVA 5%)",
+  "Utile",
   "Tipo di Pagamento",
   "CF",
   "Tracciabilità",
@@ -19,9 +22,6 @@ const headers = [
 
 function parseDate(data: string): string {
   const [month, day, year] = data.split("/");
-  console.log(
-    `parseDate: ${data} => day: ${day}, month: ${month}, year: ${year}`
-  );
   return `${day.padStart(2, "0")}/${month.padStart(2, "0")}/20${year}`;
 }
 
